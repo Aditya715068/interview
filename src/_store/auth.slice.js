@@ -70,11 +70,17 @@ function createExtraActions() {
     function logout() {
         return createAsyncThunk(
             `${name}/logout`,
-            function (arg, { dispatch }) {
-                dispatch(authActions.setAuth(null));
+            async  function (arg, { dispatch }) {
+                const data = localStorage.getItem('auth')
+                 const user = await fetchWrapper.post(`http://localhost:4000/session/logout`, { data });
+                 dispatch(authActions.setAuth(null));
                 localStorage.removeItem('auth');
                 history.navigate('/account/login');
             }
         );
     }
+
+
+ 
+      
 }

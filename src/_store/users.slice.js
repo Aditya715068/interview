@@ -33,7 +33,8 @@ function createExtraActions() {
         getAll: getAll(),
         getById: getById(),
         update: update(),
-        delete: _delete()
+        delete: _delete(),
+        audit: audit()
     };
 
     function register() {
@@ -49,6 +50,14 @@ function createExtraActions() {
             async () => await fetchWrapper.get(baseUrl)
         );
     }
+
+    function audit() {
+        return createAsyncThunk(
+            `${name}/audit`,
+            async (audits) => await fetchWrapper.get(baseUrl)
+        );
+    }
+
 
 
     function getById() {

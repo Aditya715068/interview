@@ -13,7 +13,7 @@ function fakeBackend() {
 
             function handleRoute() {
                 switch (true) {
-                    case url.endsWith('/users/authenticate') && opts.method === 'POST':
+                    case url.endsWith('/session/login') && opts.method === 'POST':
                         return authenticate();
                     case url.endsWith('/users/register') && opts.method === 'POST':
                         return register();
